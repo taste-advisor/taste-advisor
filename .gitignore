@@ -1,0 +1,11 @@
+node_modules
+build
+dist
+.nx
+# misc
+**/.idea/
+
+
+
+.nx/cache
+.nx/workspace-data

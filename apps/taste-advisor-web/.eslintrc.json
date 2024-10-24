@@ -1,0 +1,13 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": [
+    "prettier",
+    "react"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/display-name": "off",
+    "react/no-unescaped-entities": "off",
+    "prettier/prettier": "error"
+  }
+}
