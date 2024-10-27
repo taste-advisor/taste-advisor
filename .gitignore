@@ -3,6 +3,7 @@ build
 dist
 .nx
 # misc
+.env
 **/.idea/
 
 

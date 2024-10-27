@@ -14,7 +14,10 @@
     "apps/*"
   ],
   "devDependencies": {
-    "nx": "18.3.4"
+    "eslint": "^8",
+    "eslint-config-next": "15.0.1",
+    "nx": "18.3.4",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "eslint-plugin-prettier": "^5.2.1"
