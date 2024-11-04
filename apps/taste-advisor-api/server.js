@@ -1,13 +1,13 @@
 import express from 'express';
 import cors from 'cors';
-import { usersRouter } from './src/routers/usersRouter.js';
+import { restRouter } from './src/routers/restRouter.js';
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 const port = 5000;
 
-app.use('/users', usersRouter);
+app.use('/api/v1', restRouter);
 
 (async () =>
   await app.listen(port, () => {

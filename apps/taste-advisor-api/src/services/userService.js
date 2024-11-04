@@ -3,7 +3,7 @@ import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import { db } from '../db/db.js';
 import { users } from '../db/schema.js';
-import { eq, or } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 
 const generateJWT = user => {
   return jwt.sign({ email: user.email }, process.env.JWT_SECRET);
@@ -26,7 +26,7 @@ export const createNewUser = async user => {
     .select()
     .from(users)
     .where(eq(users.email, user.email))
-    .limit(1);
+    .then(u => u[0]);
 
   if (oldUser) throw new Error('User with this email already exists');
 
