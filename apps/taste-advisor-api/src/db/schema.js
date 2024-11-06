@@ -17,6 +17,7 @@ const recipes = tasteAdvisor.table('recipes', {
   dislikes: integer('dislikes').notNull(),
   ingredients: text('ingredients').notNull(),
   description: text('description').notNull(),
+  type: integer('type').references(() => recipeTypes.id),
 });
 
 const comments = tasteAdvisor.table('comments', {
@@ -31,4 +32,9 @@ const savedRecipes = tasteAdvisor.table('saved_recipes', {
   recipe: integer('recipe').references(() => recipes.id),
 });
 
-export { tasteAdvisor, users, recipes, comments, savedRecipes };
+const recipeTypes = tasteAdvisor.table('recipe_types', {
+  id: serial('id').primaryKey(),
+  name: text('name'),
+});
+
+export { tasteAdvisor, users, recipes, comments, savedRecipes, recipeTypes };
