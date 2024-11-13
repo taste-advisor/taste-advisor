@@ -1,0 +1,26 @@
+.already-registered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  a{
+    width: 75%;
+    text-decoration: none;
+  }
+
+  .already-registered-link {
+    padding: 10px 16px;
+    margin-top: 8px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    color: black;
+    text-align: center;
+
+    p{
+      font-size: 13px;
+    }
+  }
+}
+
+
+
