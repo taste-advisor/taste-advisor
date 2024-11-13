@@ -1,10 +1,9 @@
-import {useState, useEffect} from 'react'
-import { register } from "@/api/auth";
-import {AlreadyRegisterLink} from "@/app/register/components/already-registered-link/already-registered-link";
-import "./register-form.scss"
+import { useState, useEffect } from 'react';
+import { register } from '@/api/auth';
+import { AlreadyRegisterLink } from '@/app/register/components/already-registered-link/already-registered-link';
+import './register-form.scss';
 
 export const RegisterForm = () => {
-
   const handleRegisterSubmit = async formData => {
     const registerData = {
       username: formData.get('username')?.toString(),
@@ -15,20 +14,22 @@ export const RegisterForm = () => {
   };
 
   const [isClicked, setIsClicked] = useState(false);
-  const [eyeIcon, setEyeIcon] = useState("/images/visibility-off.png");
+  const [eyeIcon, setEyeIcon] = useState('/images/visibility-off.png');
 
   const handleClickEyeIcon = () => {
     setIsClicked(prevState => !prevState);
   };
 
   useEffect(() => {
-    setEyeIcon(isClicked ? "/images/visibility.png" : "/images/visibility-off.png");
+    setEyeIcon(
+      isClicked ? '/images/visibility.png' : '/images/visibility-off.png',
+    );
   }, [isClicked]);
 
   return (
     <div className="container">
       <h1>Registration</h1>
-      <form className="register-form" action={handleRegisterSubmit}>
+      <form className="registerForm" action={handleRegisterSubmit}>
         <div className="labels">
           <label htmlFor="username">
             Username
@@ -41,8 +42,16 @@ export const RegisterForm = () => {
           <label htmlFor="password">
             Password
             <div className="password">
-              <input className="password-input" type={isClicked ? "text" : "password"} placeholder="Password" />
-              <img className="password-icon" src={eyeIcon} onClick={handleClickEyeIcon}/>
+              <input
+                className="passwordInput"
+                type={isClicked ? 'text' : 'password'}
+                placeholder="Password"
+              />
+              <img
+                className="passwordIcon"
+                src={eyeIcon}
+                onClick={handleClickEyeIcon}
+              />
             </div>
           </label>
           <button type="submit"> Sign up</button>
@@ -51,4 +60,4 @@ export const RegisterForm = () => {
       </form>
     </div>
   );
-}
+};
