@@ -1,30 +1,24 @@
-import { register } from '@/api/auth';
-import { AlreadyRegisterLink } from '@/app/register/components/already-registered-link/already-registered-link';
+import './login-form.scss';
+import { login } from '@/api/auth';
+import { RegisterLink } from '@/app/login/components/register-link/register-link';
 import usePasswordToggle from '@/hooks/usePasswordToggle';
-import './register-form.scss';
 
-export const RegisterForm = () => {
-  const handleRegisterSubmit = async formData => {
-    const registerData = {
-      username: formData.get('username')?.toString(),
+export const LoginForm = () => {
+  const handleLoginSubmit = async formData => {
+    const loginData = {
       email: formData.get('email')?.toString(),
       password: formData.get('password')?.toString(),
     };
-    console.log(registerData);
-    await register(registerData);
+    await login(loginData);
   };
 
   const { inputType, eyeIcon, toggleVisibility } = usePasswordToggle();
 
   return (
     <div className="container">
-      <h1>Registration</h1>
-      <form className="registerForm" action={handleRegisterSubmit}>
+      <h1>Login</h1>
+      <form className="loginForm" action={handleLoginSubmit}>
         <div className="labels">
-          <label htmlFor="username">
-            Username
-            <input name="username" placeholder="Username" />
-          </label>
           <label htmlFor="email">
             Email
             <input name="email" placeholder="Email" />
@@ -45,9 +39,9 @@ export const RegisterForm = () => {
               />
             </div>
           </label>
-          <button type="submit"> Sign up</button>
+          <button type="submit"> Log in</button>
         </div>
-        <AlreadyRegisterLink />
+        <RegisterLink />
       </form>
     </div>
   );

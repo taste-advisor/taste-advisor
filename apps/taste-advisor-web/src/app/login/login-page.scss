@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  font-family: Roboto, sans-serif;
+}
+
+:root {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.loginBackground {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to left, #e7fafe 25%, transparent 80%),
+  url("/images/login-background-image.png");
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+.loginPage {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
