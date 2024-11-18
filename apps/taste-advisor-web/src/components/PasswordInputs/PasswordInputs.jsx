@@ -1,4 +1,5 @@
 import usePasswordToggle from '@/hooks/usePasswordToggle';
+import './PasswordInputs.scss';
 
 export const PasswordInput = ({ name, placeholder }) => {
   const { inputType, eyeIcon, toggleVisibility } = usePasswordToggle();

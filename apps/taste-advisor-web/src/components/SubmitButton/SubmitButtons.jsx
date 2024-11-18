@@ -1,16 +1,12 @@
+import './SubmitButtons.scss';
+
 export const Button = ({
   type = 'button',
   onClick,
-  className,
   children,
   disabled = false,
 }) => (
-  <button
-    type={type}
-    onClick={onClick}
-    className={className}
-    disabled={disabled}
-  >
+  <button type={type} onClick={onClick} disabled={disabled}>
     {children}
   </button>
 );

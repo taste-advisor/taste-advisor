@@ -1,3 +1,5 @@
+import './InputFields.scss';
+
 export const InputField = ({
   label,
   name,
