@@ -1,7 +1,9 @@
 import './login-form.scss';
 import { login } from '@/api/auth';
 import { RegisterLink } from '@/app/login/components/register-link/register-link';
-import usePasswordToggle from '@/hooks/usePasswordToggle';
+import { InputField } from '@/components/InputFields/InputFields';
+import { PasswordInput } from '@/components/PasswordInputs/PasswordInputs';
+import { Button } from '@/components/SubmitButton/SubmitButtons';
 
 export const LoginForm = () => {
   const handleLoginSubmit = async formData => {
@@ -11,35 +13,21 @@ export const LoginForm = () => {
     };
     await login(loginData);
   };
-
-  const { inputType, eyeIcon, toggleVisibility } = usePasswordToggle();
-
   return (
     <div className="container">
       <h1>Login</h1>
       <form className="loginForm" action={handleLoginSubmit}>
         <div className="labels">
-          <label htmlFor="email">
-            Email
-            <input name="email" placeholder="Email" />
-          </label>
-          <label htmlFor="password">
-            Password
-            <div className="password">
-              <input
-                className="passwordInput"
-                name="password"
-                type={inputType}
-                placeholder="Password"
-              />
-              <img
-                className="passwordIcon"
-                src={eyeIcon}
-                onClick={toggleVisibility}
-              />
-            </div>
-          </label>
-          <button type="submit"> Log in</button>
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+          <PasswordInput name="password" placeholder="Enter your password" />
+          <Button type="submit" className="submitButton">
+            Sign up
+          </Button>
         </div>
         <RegisterLink />
       </form>

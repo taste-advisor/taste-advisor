@@ -1,6 +1,8 @@
 import { register } from '@/api/auth';
 import { AlreadyRegisterLink } from '@/app/register/components/already-registered-link/already-registered-link';
-import usePasswordToggle from '@/hooks/usePasswordToggle';
+import { InputField } from '@/components/InputFields/InputFields.jsx';
+import { PasswordInput } from '@/components/PasswordInputs/PasswordInputs';
+import { Button } from '@/components/SubmitButton/SubmitButtons';
 import './register-form.scss';
 
 export const RegisterForm = () => {
@@ -14,38 +16,22 @@ export const RegisterForm = () => {
     await register(registerData);
   };
 
-  const { inputType, eyeIcon, toggleVisibility } = usePasswordToggle();
-
   return (
     <div className="container">
       <h1>Registration</h1>
       <form className="registerForm" action={handleRegisterSubmit}>
         <div className="labels">
-          <label htmlFor="username">
-            Username
-            <input name="username" placeholder="Username" />
-          </label>
-          <label htmlFor="email">
-            Email
-            <input name="email" placeholder="Email" />
-          </label>
-          <label htmlFor="password">
-            Password
-            <div className="password">
-              <input
-                className="passwordInput"
-                name="password"
-                type={inputType}
-                placeholder="Password"
-              />
-              <img
-                className="passwordIcon"
-                src={eyeIcon}
-                onClick={toggleVisibility}
-              />
-            </div>
-          </label>
-          <button type="submit"> Sign up</button>
+          <InputField label="Username" name="username" placeholder="Username" />
+          <InputField
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Email"
+          />
+          <PasswordInput name="password" placeholder="Enter your password" />
+          <Button type="submit" className="submitButton">
+            Sign up
+          </Button>
         </div>
         <AlreadyRegisterLink />
       </form>
