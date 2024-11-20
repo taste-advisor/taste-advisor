@@ -1,6 +1,9 @@
 'use client';
 
 import { getMe, login } from '@/api/auth';
+import { Header } from '@/components/Header/Header.jsx';
+import './home-page.scss';
+import { Footer } from '@/components/Footer/Footer';
 
 export default function Home() {
   const handleAuth = async () => {
@@ -10,8 +13,8 @@ export default function Home() {
 
   return (
     <div>
-      <h1>GET ME</h1>
-      <button onClick={handleAuth}>AUTH</button>
+      <Header />
+      <Footer />
     </div>
   );
 }
