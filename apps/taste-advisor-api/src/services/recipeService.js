@@ -34,7 +34,6 @@ export const createNewRecipe = async (recipe, reqUser) => {
   const user = await findByEmail(reqUser.email);
   if (!user) throw new Error('Unauthorized');
 
-  console.log(user);
   const [newRecipe] = await db
     .insert(recipes)
     .values({
@@ -55,7 +54,6 @@ export const createNewRecipe = async (recipe, reqUser) => {
     })
     .returning();
 
-  console.log(newRecipe);
   if (recipe.categories.length) {
     for (const category of recipe.categories) {
       await db.insert(recipeCategories).values({
