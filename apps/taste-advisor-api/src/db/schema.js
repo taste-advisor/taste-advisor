@@ -1,4 +1,4 @@
-import { integer, pgSchema, serial, text } from 'drizzle-orm/pg-core';
+import { integer, numeric, pgSchema, serial, text } from 'drizzle-orm/pg-core';
 
 const tasteAdvisor = pgSchema('taste_advisor');
 
@@ -16,8 +16,15 @@ const recipes = tasteAdvisor.table('recipes', {
   likes: integer('likes').notNull(),
   dislikes: integer('dislikes').notNull(),
   ingredients: text('ingredients').notNull(),
-  description: text('description').notNull(),
-  type: integer('type').references(() => recipeTypes.id),
+  instructions: text('instructions').notNull(),
+  date: text('date').notNull(),
+  description: text('description'),
+  imageUrl: text('image_url'),
+  calories: numeric('calories'),
+  fat: numeric('fat'),
+  protein: numeric('protein'),
+  carbohydrate: numeric('carbohydrate'),
+  cholesterol: numeric('cholesterol'),
 });
 
 const comments = tasteAdvisor.table('comments', {
@@ -37,4 +44,17 @@ const recipeTypes = tasteAdvisor.table('recipe_types', {
   name: text('name'),
 });
 
-export { tasteAdvisor, users, recipes, comments, savedRecipes, recipeTypes };
+const recipeCategories = tasteAdvisor.table('recipe_categories', {
+  type: integer('type').references(() => recipeTypes.id),
+  recipe: integer('recipe').references(() => recipes.id),
+});
+
+export {
+  tasteAdvisor,
+  users,
+  recipes,
+  comments,
+  savedRecipes,
+  recipeTypes,
+  recipeCategories,
+};

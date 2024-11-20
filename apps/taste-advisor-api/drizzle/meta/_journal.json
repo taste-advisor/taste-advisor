@@ -15,6 +15,20 @@
       "when": 1730928885758,
       "tag": "0001_volatile_tomorrow_man",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1731533364853,
+      "tag": "0002_tiny_texas_twister",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1731535409152,
+      "tag": "0003_awesome_mysterio",
+      "breakpoints": true
     }
   ]
 }
