@@ -1,6 +1,6 @@
 'use client';
 
-import { RegisterLogo } from '@/app/register/components/register-logo/register-logo';
+import { Logo } from '@/components/Logo/Logo.jsx';
 import { RegisterForm } from '@/app/register/components/register-form/register-form';
 import './register-page.scss';
 
@@ -8,7 +8,7 @@ export default function RegisterPage() {
   return (
     <div className="registerBackground">
       <div className="registerPage">
-        <RegisterLogo />
+        <Logo />
         <RegisterForm />
       </div>
     </div>

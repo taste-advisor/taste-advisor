@@ -1,6 +1,6 @@
 import './login-form.scss';
 import { login } from '@/api/auth';
-import { RegisterLink } from '@/app/login/components/register-link/register-link';
+import { RegisterLink } from '@/components/RegisterLink/RegisterLink.jsx';
 import { InputField } from '@/components/InputFields/InputFields';
 import { PasswordInput } from '@/components/PasswordInputs/PasswordInputs';
 import { Button } from '@/components/SubmitButton/SubmitButtons';
@@ -26,10 +26,13 @@ export const LoginForm = () => {
           />
           <PasswordInput name="password" placeholder="Enter your password" />
           <Button type="submit" className="submitButton">
-            Sign up
+            Log in
           </Button>
         </div>
-        <RegisterLink />
+        <div className="registeredLink">
+          <p> Don`t have an account yet? </p>
+          <RegisterLink />
+        </div>
       </form>
     </div>
   );

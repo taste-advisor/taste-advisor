@@ -1,5 +1,5 @@
 import { register } from '@/api/auth';
-import { AlreadyRegisterLink } from '@/app/register/components/already-registered-link/already-registered-link';
+import { LoginLink } from '@/components/LoginLink/LoginLink.jsx';
 import { InputField } from '@/components/InputFields/InputFields.jsx';
 import { PasswordInput } from '@/components/PasswordInputs/PasswordInputs';
 import { Button } from '@/components/SubmitButton/SubmitButtons';
@@ -33,7 +33,10 @@ export const RegisterForm = () => {
             Sign up
           </Button>
         </div>
-        <AlreadyRegisterLink />
+        <div className="alreadyRegistered">
+          <p> Already have an account? </p>
+          <LoginLink />
+        </div>
       </form>
     </div>
   );
