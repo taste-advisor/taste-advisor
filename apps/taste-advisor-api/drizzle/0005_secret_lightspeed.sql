@@ -1,0 +1,1 @@
+ALTER TABLE "taste_advisor"."liked_recipes" ADD COLUMN "reaction" text;

@@ -7,6 +7,7 @@ const users = tasteAdvisor.table('users', {
   username: text('username').notNull(),
   email: text('email').notNull(),
   password: text('password').notNull(),
+  avatarUrl: text('avatar_url'),
 });
 
 const recipes = tasteAdvisor.table('recipes', {
@@ -35,7 +36,7 @@ const comments = tasteAdvisor.table('comments', {
 });
 
 const savedRecipes = tasteAdvisor.table('saved_recipes', {
-  user: integer('author').references(() => users.id),
+  user: integer('user').references(() => users.id),
   recipe: integer('recipe').references(() => recipes.id),
 });
 
@@ -49,6 +50,12 @@ const recipeCategories = tasteAdvisor.table('recipe_categories', {
   recipe: integer('recipe').references(() => recipes.id),
 });
 
+const likedRecipes = tasteAdvisor.table('liked_recipes', {
+  user: integer('user').references(() => users.id),
+  recipe: integer('recipe').references(() => recipes.id),
+  reaction: text('reaction'),
+});
+
 export {
   tasteAdvisor,
   users,
@@ -57,4 +64,5 @@ export {
   savedRecipes,
   recipeTypes,
   recipeCategories,
+  likedRecipes,
 };

@@ -23,3 +23,19 @@ export const createRecipe = async body => {
   );
   return data;
 };
+
+export const saveRecipe = async id => {
+  const { data } = await client.post(`/recipes/save?recipeId=${id}`);
+  if (data.status === 'success') {
+    return data.data;
+  }
+};
+
+export const reactToRecipe = async (id, reaction) => {
+  const { data } = await client.post(
+    `/recipes/react?recipeId=${id}&reaction=${reaction}`,
+  );
+  if (data.status === 'success') {
+    return data.data;
+  }
+};
