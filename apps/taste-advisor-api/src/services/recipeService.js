@@ -1,6 +1,12 @@
 import { db } from '../db/db.js';
-import { recipeCategories, recipes } from '../db/schema.js';
-import { eq } from 'drizzle-orm';
+import {
+  comments,
+  likedRecipes,
+  recipeCategories,
+  recipes,
+  savedRecipes,
+} from '../db/schema.js';
+import { and, eq } from 'drizzle-orm';
 import { findByEmail } from './userService.js';
 
 export const getAllRecipes = async () => {
@@ -21,11 +27,13 @@ export const getRecipeById = async id => {
     .where(eq(recipes.id, id))
     .limit(1);
   const categoriesData = await db.select().from(recipeCategories);
+  const commentsData = await db.select().from(comments);
   return {
     ...data,
     categories: categoriesData
       .filter(c => c.recipe === data.id)
       .map(item => item.type),
+    comments: commentsData.filter(c => c.recipe === data.id),
   };
 };
 
@@ -64,4 +72,115 @@ export const createNewRecipe = async (recipe, reqUser) => {
   }
 
   return newRecipe;
+};
+
+export const saveRecipe = async (recipe, reqUser) => {
+  if (!reqUser) throw new Error('Unauthorized');
+  const user = await findByEmail(reqUser.email);
+  if (!user) throw new Error('Unauthorized');
+
+  const [alreadySaved] = await db
+    .select()
+    .from(savedRecipes)
+    .where(
+      and(eq(savedRecipes.recipe, recipe), eq(savedRecipes.user, user.id)),
+    );
+
+  let savedRecipe;
+  if (!alreadySaved) {
+    [savedRecipe] = await db
+      .insert(savedRecipes)
+      .values({
+        recipe: recipe,
+        user: reqUser.id,
+      })
+      .returning();
+  } else {
+    await db
+      .delete(savedRecipes)
+      .where(
+        and(eq(savedRecipes.recipe, recipe), eq(savedRecipes.user, user.id)),
+      );
+  }
+
+  return savedRecipe;
+};
+
+export const reactToRecipe = async (recipe, reqUser, reaction) => {
+  if (!reqUser) throw new Error('Unauthorized');
+  const user = await findByEmail(reqUser.email);
+  if (!user) throw new Error('Unauthorized');
+
+  const [recipeData] = await db
+    .select()
+    .from(recipes)
+    .where(eq(recipes.id, recipe))
+    .limit(1);
+
+  const [alreadyReacted] = await db
+    .select()
+    .from(likedRecipes)
+    .where(
+      and(eq(likedRecipes.recipe, recipe), eq(likedRecipes.user, user.id)),
+    );
+
+  let likedRecipe;
+
+  if (!alreadyReacted) {
+    [likedRecipe] = await db
+      .insert(likedRecipes)
+      .values({
+        recipe: recipe,
+        user: reqUser.id,
+        reaction: reaction,
+      })
+      .returning();
+
+    await db
+      .update(recipes)
+      .set(
+        reaction === 'like'
+          ? { likes: recipeData.likes + 1 }
+          : { dislikes: recipeData.dislikes + 1 },
+      )
+      .where(eq(recipes.id, recipe));
+  } else {
+    if (alreadyReacted.reaction === reaction) {
+      await db
+        .delete(likedRecipes)
+        .where(
+          and(eq(likedRecipes.recipe, recipe), eq(likedRecipes.user, user.id)),
+        );
+
+      await db
+        .update(recipes)
+        .set(
+          reaction === 'like'
+            ? { likes: recipeData.likes - 1 }
+            : { dislikes: recipeData.dislikes - 1 },
+        )
+        .where(eq(recipes.id, recipe));
+    } else {
+      await db
+        .update(likedRecipes)
+        .set({ reaction: reaction })
+        .where(
+          and(eq(likedRecipes.recipe, recipe), eq(likedRecipes.user, user.id)),
+        );
+
+      await db
+        .update(recipes)
+        .set(
+          reaction === 'like'
+            ? { likes: recipeData.likes + 1, dislikes: recipeData.dislikes - 1 }
+            : {
+                dislikes: recipeData.dislikes + 1,
+                likes: recipeData.likes - 1,
+              },
+        )
+        .where(eq(recipes.id, recipe));
+    }
+  }
+
+  return likedRecipe;
 };

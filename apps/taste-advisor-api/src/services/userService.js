@@ -2,8 +2,8 @@ import { compare, hash } from 'bcrypt';
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import { db } from '../db/db.js';
-import { users } from '../db/schema.js';
-import { eq } from 'drizzle-orm';
+import { likedRecipes, recipes, savedRecipes, users } from '../db/schema.js';
+import { and, eq } from 'drizzle-orm';
 
 const generateJWT = user => {
   return jwt.sign({ email: user.email }, process.env.JWT_SECRET);
@@ -52,4 +52,34 @@ export const loginUser = async (email, password) => {
   if (!isPasswordCorrect) throw new Error('Incorrect password');
 
   return generateJWT(user);
+};
+
+export const getUserData = async user => {
+  const saved = await db
+    .select()
+    .from(savedRecipes)
+    .where(eq(savedRecipes.user, user.id));
+
+  const liked = await db
+    .select()
+    .from(likedRecipes)
+    .where(
+      and(eq(likedRecipes.user, user.id), eq(likedRecipes.reaction, 'like')),
+    );
+
+  const authored = await db
+    .select()
+    .from(recipes)
+    .where(eq(recipes.author, user.id));
+
+  return {
+    ...user,
+    saved: saved.map(d => d.recipe),
+    liked: liked.map(d => d.recipe),
+    authored: authored.map(d => d.id),
+  };
+};
+
+export const updateUser = async (user, newData) => {
+  await db.update(users).set(newData).where(eq(users.id, user.id));
 };
