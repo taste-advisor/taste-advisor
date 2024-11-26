@@ -4,10 +4,14 @@
   justify-content: space-around;
   width: 35%;
 
-  a {
+  .navigationLink {
     text-decoration: none;
     color: #666687;
     font-size: 12px;
     font-weight: bold;
+
+    &:hover {
+      color: #7d7daf;
+    }
   }
 }

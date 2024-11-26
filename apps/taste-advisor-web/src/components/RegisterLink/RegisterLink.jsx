@@ -3,12 +3,8 @@ import Link from 'next/link';
 
 export const RegisterLink = () => {
   return (
-    <>
-      <Link href="/register">
-        <div className="registerLink">
-          <p>Sign up</p>
-        </div>
-      </Link>
-    </>
+    <Link href="/register" className="registerLink">
+      <p className="registerLinkText">Sign up</p>
+    </Link>
   );
 };

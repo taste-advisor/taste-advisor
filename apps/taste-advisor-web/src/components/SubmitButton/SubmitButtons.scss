@@ -1,4 +1,4 @@
-button {
+.submitButton {
   margin-top: 25px;
   margin-bottom: 13px;
   padding: 10px 16px;
@@ -6,4 +6,8 @@ button {
   border-radius: 4px;
   background-color: #30b37b;
   color: white;
+
+  &:hover {
+    background-color: #23a36d;
+  }
 }

@@ -12,6 +12,10 @@
     background-color: #E7FAFE;
     color: #30B37B;
     font-weight: bold;
+
+    &:hover {
+      background-color: #ddf1f4;
+    }
   }
 
   .loginLink {
@@ -19,5 +23,9 @@
     background-color: #30B37B;
     color: white;
     font-weight: bold;
+
+    &:hover {
+      background-color: #23a36d;
+    }
   }
 }
