@@ -1,20 +1,18 @@
-'use client';
-
-import { getMe, login } from '@/api/auth';
-import { Header } from '@/components/Header/Header.jsx';
 import './home-page.scss';
-import { Footer } from '@/components/Footer/Footer';
+import { MainCover } from '@/components/HomePage/main-cover/main-cover';
+import { CategoriesList } from '@/components/HomePage/categories-list/categories-list';
+import { RecipesList } from '@/components/HomePage/recipes-list/recipes-list';
+import { AboutProjectCover } from '@/components/HomePage/about-project-cover/about-project-cover';
+import { AboutUsCover } from '@/components/HomePage/about-us-cover/about-us-cover';
 
 export default function Home() {
-  const handleAuth = async () => {
-    const res = await getMe();
-    console.log(res);
-  };
-
   return (
-    <div>
-      <Header />
-      <Footer />
+    <div className="homePage">
+      <MainCover />
+      <CategoriesList />
+      <RecipesList />
+      <AboutProjectCover />
+      <AboutUsCover />
     </div>
   );
 }

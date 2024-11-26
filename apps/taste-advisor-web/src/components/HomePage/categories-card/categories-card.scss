@@ -1,0 +1,22 @@
+ .categoriesCard {
+   text-decoration: none;
+    width: 180px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, #0584221A 10%, #0584221A 0%, transparent 80%);
+    border-radius: 30px;
+
+   &:hover {
+     background: linear-gradient(to bottom, #0584221A 10%, #0584221A 100%, transparent 80%);
+   }
+
+    .categoriesName{
+      font-size: 16px;
+      color: #000000;
+    }
+  }
+
+

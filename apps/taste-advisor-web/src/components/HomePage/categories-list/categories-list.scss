@@ -1,0 +1,36 @@
+.categoriesList{
+  width: 85%;
+  margin-top: 50px;
+
+  .categoriesMenu{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    .categoriesLink{
+      text-decoration: none;
+      width: fit-content;
+      padding: 10px 16px;
+      background-color: #E7FAFE;
+      border: 1px solid #B2F2D7;
+      border-radius: 4px;
+      color: #30B37B;
+      text-align: center;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #ddf1f4;
+      }
+
+      .categoriesListText{
+        font-size: 13px;
+      }
+    }
+  }
+
+  .categoriesCardsList{
+    width: 100%;
+    display: flex;
+    gap: 40px;
+  }
+}

@@ -8,8 +8,8 @@ export default function LoginPage() {
   return (
     <div className="loginBackground">
       <div className="loginPage">
-        <LoginForm />
         <Logo />
+        <LoginForm />
       </div>
     </div>
   );

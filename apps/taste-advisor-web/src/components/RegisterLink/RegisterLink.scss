@@ -1,16 +1,17 @@
- a{
-    width: 75%;
-    text-decoration: none;
+.registerLink {
+  width: 75%;
+  text-decoration: none;
+  padding: 10px 16px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  color: black;
+  text-align: center;
+
+  &:hover {
+    border: 1px solid black;
   }
 
-  .registerLink {
-    padding: 10px 16px;
-    border: 1px solid gray;
-    border-radius: 4px;
-    color: black;
-    text-align: center;
-
-    p{
-      font-size: 13px;
-    }
+  .registerLinkText{
+    font-size: 13px;
+  }
 }

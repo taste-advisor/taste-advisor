@@ -1,0 +1,42 @@
+.aboutUsCover{
+  margin-top: 50px;
+  margin-bottom: 40px;
+  width: 85%;
+  background: linear-gradient(to right, #e7fafe 45%, transparent 80%),
+  url("/images/aboutUsImage.png");
+  background-repeat: no-repeat;
+  background-position: right;
+  border-radius: 30px;
+
+  .aboutUsInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40%;
+    margin: 110px 0 110px 100px;
+
+    .aboutUsText{
+      color: #00000099;
+    }
+
+    .recipesLink {
+      width: 40%;
+      text-decoration: none;
+      padding: 10px 16px;
+      background-color: white;
+      border: 1px solid #8e8c8c;
+      border-radius: 4px;
+      color: black;
+      text-align: center;
+      font-weight: bold;
+
+      &:hover {
+        border: 1px solid #000000;
+      }
+
+      .recipesLinkText{
+        font-size: 13px;
+      }
+    }
+  }
+}

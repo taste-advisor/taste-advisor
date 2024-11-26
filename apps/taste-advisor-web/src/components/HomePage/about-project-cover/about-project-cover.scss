@@ -1,0 +1,47 @@
+.aboutProjectCover {
+  width: 85%;
+  margin-top: 50px;
+  display: flex;
+  gap: 10px;
+
+  .aboutProjectInfo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+
+    .aboutProjectText {
+      color: #00000099;
+    }
+
+    .aboutProjectLink {
+      width: 25%;
+      text-decoration: none;
+      padding: 10px 16px;
+      background-color: #30b37b;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+
+      &:hover {
+        background-color: #23a36d;
+      }
+
+      .aboutProjectLinkText {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .aboutProjectImage{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    background-color: #30b37b;
+    border-radius: 30px;
+    background: linear-gradient(to top, #daf5fa 10%, #daf5fa 0%, transparent 80%);
+  }
+}
