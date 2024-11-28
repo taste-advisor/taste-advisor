@@ -7,18 +7,6 @@ import { useEffect, useState } from 'react';
 import { RECIPE_CATEGORIES } from '@/constants';
 import './recipes-list.scss';
 
-const CreateCard = info => {
-  return (
-    <RecipeCard
-      key={info.id}
-      image={info.imageUrl}
-      title={info.name}
-      category={info.categories}
-      calories={info.calories}
-    />
-  );
-};
-
 function getCategoryNamesByIds(categoryIds) {
   return categoryIds
     .map(id => {
@@ -37,9 +25,7 @@ export const RecipesList = () => {
       setData(res);
     });
   }, []);
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
   return (
     <div className="recipesList">
       <div className="recipesListTitle">
@@ -51,20 +37,23 @@ export const RecipesList = () => {
       </div>
       <div className="recipesCardsList">
         {data ? (
-          Object.values(data)
+          data
             .slice(0, 9)
             .map(info => (
-              <CreateCard
+              <RecipeCard
                 key={info.id}
-                {...info}
-                categories={getCategoryNamesByIds(info.categories)} // Передача текстових назв
+                recipeId={info.id}
+                image={info.imageUrl}
+                title={info.name}
+                category={getCategoryNamesByIds(info.categories)}
+                calories={info.calories}
               />
             ))
         ) : (
           <p>Завантаження...</p>
         )}
       </div>
-      <Link href="/recipe" className="recipesLink">
+      <Link href="/recipes" className="recipesLink">
         <p>View All Meal</p>
       </Link>
     </div>

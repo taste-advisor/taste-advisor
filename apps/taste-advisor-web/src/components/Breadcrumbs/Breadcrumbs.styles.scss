@@ -1,0 +1,21 @@
+.container, .item {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.path, .divider {
+  color: #666687;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.item:last-child .path {
+  color: #32324D;
+  font-weight: 600;
+}
+
+.item:last-child .divider {
+  display: none;
+}
