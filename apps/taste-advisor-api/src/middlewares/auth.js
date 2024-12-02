@@ -22,7 +22,6 @@ export const authenticate = async (req, res, next) => {
     req.user = await findByEmail(decode.email);
     next();
   } catch (e) {
-    console.log(e.message);
     req.user = undefined;
     next();
   }

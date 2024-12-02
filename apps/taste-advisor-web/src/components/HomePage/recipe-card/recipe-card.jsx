@@ -19,7 +19,6 @@ export const RecipeCard = ({ recipeId, image, calories, title, category }) => {
     try {
       const savedRecipes =
         JSON.parse(localStorage.getItem('savedRecipes')) || [];
-      console.log(savedRecipes);
 
       if (savedRecipes.includes(recipeId)) {
         const updatedRecipes = savedRecipes.filter(id => id !== recipeId);

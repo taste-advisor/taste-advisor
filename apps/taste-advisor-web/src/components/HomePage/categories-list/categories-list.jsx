@@ -3,10 +3,6 @@ import { RECIPE_CATEGORIES } from '@/constants';
 import { CategoriesCard } from '@/components/HomePage/categories-card/categories-card';
 import './categories-list.scss';
 
-const CreateCard = info => {
-  return <CategoriesCard key={info.id} name={info.name} image={info.img} />;
-};
-
 export const CategoriesList = () => {
   return (
     <div className="categoriesList">
@@ -17,7 +13,7 @@ export const CategoriesList = () => {
         </Link>
       </div>
       <div className="categoriesCardsList">
-        {Object.values(RECIPE_CATEGORIES).slice(0, 6).map(CreateCard)}
+        {Object.values(RECIPE_CATEGORIES).slice(0, 6).map(CategoriesCard)}
       </div>
     </div>
   );
