@@ -24,9 +24,10 @@ export const createRecipe = async body => {
   return data;
 };
 
-export const saveRecipe = async id => {
+export const saveRecipe = async (id, body = {}) => {
   const { data } = await client.post(
     `/recipes/save?recipeId=${id}`,
+    body,
     getAuthorizationHeader(),
   );
   if (data.status === 'success') {
@@ -34,9 +35,10 @@ export const saveRecipe = async id => {
   }
 };
 
-export const reactToRecipe = async (id, reaction) => {
+export const reactToRecipe = async (id, reaction, body = {}) => {
   const { data } = await client.post(
     `/recipes/react?recipeId=${id}&reaction=${reaction}`,
+    body,
     getAuthorizationHeader(),
   );
   if (data.status === 'success') {

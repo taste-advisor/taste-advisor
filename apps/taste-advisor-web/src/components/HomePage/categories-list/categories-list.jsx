@@ -4,7 +4,7 @@ import { CategoriesCard } from '@/components/HomePage/categories-card/categories
 import './categories-list.scss';
 
 const CreateCard = info => {
-  return <CategoriesCard key={info.id} name={info.name} />;
+  return <CategoriesCard key={info.id} name={info.name} image={info.img} />;
 };
 
 export const CategoriesList = () => {
@@ -17,7 +17,7 @@ export const CategoriesList = () => {
         </Link>
       </div>
       <div className="categoriesCardsList">
-        {Object.values(RECIPE_CATEGORIES).slice(0, 7).map(CreateCard)}
+        {Object.values(RECIPE_CATEGORIES).slice(0, 6).map(CreateCard)}
       </div>
     </div>
   );
