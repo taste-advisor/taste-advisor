@@ -1,8 +1,8 @@
 'use client';
 
 import { Logo } from '@/components/Logo/Logo.jsx';
-import { UnautorizedMenu } from '@/components/Header/components/unautorized-menu';
-import { AutorizedMenu } from '@/components/Header/components/autorized-menu';
+import { UnauthorizedMenu } from '@/components/Header/components/unauthorized-menu';
+import { AuthorizedMenu } from '@/components/Header/components/authorized-menu';
 import { Navigation } from '@/components/Navigation/Navigation.jsx';
 import { getToken } from '@/api/utils';
 import { usePathname } from 'next/navigation';
@@ -20,7 +20,7 @@ export const Header = () => {
     <div className="header">
       <Logo className="logo" />
       <Navigation />
-      {getToken() ? <AutorizedMenu /> : <UnautorizedMenu />}
+      {getToken() ? <AuthorizedMenu /> : <UnauthorizedMenu />}
     </div>
   );
 };

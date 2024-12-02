@@ -1,3 +1,9 @@
+import Link from 'next/link';
+
 export const Logo = () => {
-  return <img className="logo" src="/images/logo.png" alt="logo images"></img>;
+  return (
+    <Link href="/">
+      <img className="logo" src="/images/logo.png" alt="logo images" />
+    </Link>
+  );
 };

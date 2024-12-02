@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { RECIPE_CATEGORIES } from '@/constants';
 import './recipes-list.scss';
 
-function getCategoryNamesByIds(categoryIds) {
+const getCategoryNamesByIds = categoryIds => {
   return categoryIds
     .map(id => {
       const category = Object.values(RECIPE_CATEGORIES).find(
@@ -16,7 +16,7 @@ function getCategoryNamesByIds(categoryIds) {
       return category ? category.name : 'Unknown';
     })
     .join(', ');
-}
+};
 
 export const RecipesList = () => {
   const [data, setData] = useState(null);
@@ -31,8 +31,9 @@ export const RecipesList = () => {
       <div className="recipesListTitle">
         <h1>Simple and tasty recipes</h1>
         <p className="recipesListDescription">
-          Lorem ipsum dolor sit amet, consectetuipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqut enim ad minim{' '}
+          Discover a collection of quick and delicious meals perfect for any
+          occasion. From hearty dinners to sweet treats, these recipes are easy
+          to prepare and packed with flavor!
         </p>
       </div>
       <div className="recipesCardsList">

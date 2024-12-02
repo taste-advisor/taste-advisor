@@ -1,10 +1,10 @@
 import { RegisterLink } from '@/components/RegisterLink/RegisterLink.jsx';
 import { LoginLink } from '@/components/LoginLink/LoginLink';
-import './unautorized-menu.scss';
+import './unauthorized-menu.scss';
 
-export const UnautorizedMenu = () => {
+export const UnauthorizedMenu = () => {
   return (
-    <div className="unautorizedMenu">
+    <div className="unauthorizedMenu">
       <RegisterLink className="registerLink" />
       <LoginLink className="loginLink" />
     </div>
