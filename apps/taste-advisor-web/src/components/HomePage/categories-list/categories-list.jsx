@@ -13,7 +13,11 @@ export const CategoriesList = () => {
         </Link>
       </div>
       <div className="categoriesCardsList">
-        {Object.values(RECIPE_CATEGORIES).slice(0, 6).map(CategoriesCard)}
+        {Object.values(RECIPE_CATEGORIES)
+          .slice(0, 6)
+          .map(c => (
+            <CategoriesCard key={c.name} img={c.img} name={c.name} />
+          ))}
       </div>
     </div>
   );
