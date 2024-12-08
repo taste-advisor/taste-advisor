@@ -45,3 +45,15 @@ export const update = async (req, res) => {
     return res.status(500).json({ status: 'error', data: e.message });
   }
 };
+
+export const getById = async (req, res) => {
+  const {
+    query: { id },
+  } = req;
+  try {
+    const result = await getUserData(id);
+    res.status(200).json({ status: 'success', data: result });
+  } catch (e) {
+    return res.status(500).json({ status: 'error', data: e.message });
+  }
+};

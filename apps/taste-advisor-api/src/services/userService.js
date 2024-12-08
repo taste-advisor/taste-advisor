@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 import { db } from '../db/db.js';
 import { likedRecipes, recipes, savedRecipes, users } from '../db/schema.js';
 import { and, eq } from 'drizzle-orm';
+import { getRecipeById } from './recipeService.js';
 
 const generateJWT = user => {
   return jwt.sign({ email: user.email }, process.env.JWT_SECRET);
@@ -34,6 +35,9 @@ export const createNewUser = async user => {
     username: user.username,
     email: user.email,
     password: hashedPassword,
+    avatarUrl: user.avatarUrl
+      ? user.avatarUrl
+      : 'https://live.staticflickr.com/6057/6247858665_390dae8da7_z.jpg',
   });
 
   return generateJWT(user);
@@ -55,31 +59,57 @@ export const loginUser = async (email, password) => {
 };
 
 export const getUserData = async user => {
-  const saved = await db
+  const savedIds = await db
     .select()
     .from(savedRecipes)
     .where(eq(savedRecipes.user, user.id));
+  const saved = [];
+  for (const data of savedIds) {
+    const recipe = await getRecipeById(data.recipe);
+    saved.push(recipe);
+  }
 
-  const liked = await db
+  const likedIds = await db
     .select()
     .from(likedRecipes)
     .where(
       and(eq(likedRecipes.user, user.id), eq(likedRecipes.reaction, 'like')),
     );
+  const liked = [];
+  for (const data of likedIds) {
+    const recipe = await getRecipeById(data.recipe);
+    liked.push(recipe);
+  }
 
-  const authored = await db
+  const authoredIds = await db
     .select()
     .from(recipes)
     .where(eq(recipes.author, user.id));
+  const authored = [];
+  for (const data of authoredIds) {
+    const recipe = await getRecipeById(data.id);
+    authored.push(recipe);
+  }
 
   return {
     ...user,
-    saved: saved.map(d => d.recipe),
-    liked: liked.map(d => d.recipe),
-    authored: authored.map(d => d.id),
+    saved,
+    liked,
+    authored,
   };
 };
 
 export const updateUser = async (user, newData) => {
   await db.update(users).set(newData).where(eq(users.id, user.id));
+};
+
+export const getUserById = async user => {
+  const res = await db
+    .select()
+    .from(users)
+    .where(eq(users.id, user))
+    .limit(1)
+    .then(u => u[0]);
+  const { password: _password, ...userWithoutPassword } = res;
+  return { ...userWithoutPassword };
 };

@@ -16,9 +16,7 @@ const validateHeader = req => {
 export const authenticate = async (req, res, next) => {
   try {
     const token = validateHeader(req);
-    console.log(token);
     const decode = await jwt.verify(token, process.env.JWT_SECRET);
-    console.log(decode);
     req.user = await findByEmail(decode.email);
     next();
   } catch (e) {
