@@ -1,6 +1,8 @@
+import './page-module.scss';
 import React from 'react';
 import { Breadcrumbs } from '@/components/Breadcrumbs/Breadcrumbs';
 import { getRecipeById } from '@/api/recipe';
+import SingleRecipePage from '@/components/SingleRecipePage/SingleRecipePage';
 
 const RecipePage = async ({ params }) => {
   const recipeId = (await params).recipeId;
@@ -11,9 +13,9 @@ const RecipePage = async ({ params }) => {
     { label: `${data.name}`, href: `/recipes/${recipeId}` },
   ];
   return (
-    <div>
+    <div className="recipePage">
       <Breadcrumbs items={breadcrumbsOptions} />
-      {data.name}
+      <SingleRecipePage data={data} />
     </div>
   );
 };

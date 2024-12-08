@@ -1,0 +1,32 @@
+.nutrition {
+  background-color: #E7FAFE;
+  flex: 1;
+  width: 40%;
+  padding: 24px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  h4 {
+    color: #181826;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.nutritionListItem {
+  border-bottom: 1px solid #E1E1E1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 16px;
+}
+
+.value {
+  color: #181826;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+}

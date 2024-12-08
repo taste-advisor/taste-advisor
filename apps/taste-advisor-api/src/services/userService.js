@@ -81,6 +81,18 @@ export const getUserData = async user => {
     liked.push(recipe);
   }
 
+  const dislikedIds = await db
+    .select()
+    .from(likedRecipes)
+    .where(
+      and(eq(likedRecipes.user, user.id), eq(likedRecipes.reaction, 'dislike')),
+    );
+  const disliked = [];
+  for (const data of dislikedIds) {
+    const recipe = await getRecipeById(data.recipe);
+    disliked.push(recipe);
+  }
+
   const authoredIds = await db
     .select()
     .from(recipes)
@@ -95,6 +107,7 @@ export const getUserData = async user => {
     ...user,
     saved,
     liked,
+    disliked,
     authored,
   };
 };

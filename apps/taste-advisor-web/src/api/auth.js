@@ -46,3 +46,10 @@ export const updateUser = async body => {
   }
   return data.data;
 };
+
+export const getUserById = async id => {
+  const { data } = await client.get(`/users/user?id=${id}`);
+  if (data.status === 'success') {
+    return data.data;
+  }
+};

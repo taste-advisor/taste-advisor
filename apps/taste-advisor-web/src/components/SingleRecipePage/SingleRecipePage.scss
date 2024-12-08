@@ -1,0 +1,127 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.headerText {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+  color: #000;
+}
+
+.headerContent {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.userData {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+  color: #000;
+}
+
+.username {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.date {
+  color: #999999;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.headerInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  img {
+    width: 20px;
+  }
+}
+
+.buttonRow {
+  display: flex;
+  gap: 15px;
+}
+
+.mainBlock {
+  max-height: 600px;
+  display: flex;
+  gap: 30px;
+  img {
+    width: 60%;
+    max-height: 600px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+}
+
+.ingredients {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ingredientItem {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #B2F2D7;
+}
+
+.marker {
+  width: 20px;
+  aspect-ratio: 1;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #C0C0CF;
+}
+
+.instructionItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.number {
+  color: #181826;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 700;
+}
