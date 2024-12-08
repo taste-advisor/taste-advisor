@@ -7,7 +7,7 @@ import {
   savedRecipes,
 } from '../db/schema.js';
 import { and, eq } from 'drizzle-orm';
-import { findByEmail } from './userService.js';
+import { findByEmail, getUserById } from './userService.js';
 
 export const getAllRecipes = async () => {
   const data = await db.select().from(recipes);
@@ -28,12 +28,21 @@ export const getRecipeById = async id => {
     .limit(1);
   const categoriesData = await db.select().from(recipeCategories);
   const commentsData = await db.select().from(comments);
+  const formattedCommentsData = [];
+  for (const comment of commentsData) {
+    const authorData = await getUserById(comment.author);
+    formattedCommentsData.push({
+      ...comment,
+      author: authorData,
+    });
+  }
   return {
     ...data,
+    author: await getUserById(data.author),
     categories: categoriesData
       .filter(c => c.recipe === data.id)
       .map(item => item.type),
-    comments: commentsData.filter(c => c.recipe === data.id),
+    comments: formattedCommentsData.filter(c => c.recipe === data.id),
   };
 };
 

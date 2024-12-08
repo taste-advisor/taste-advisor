@@ -1,6 +1,7 @@
 import express from 'express';
 import {
   auth,
+  getById,
   login,
   register,
   update,
@@ -13,3 +14,4 @@ usersRouter.post('/register', register);
 usersRouter.post('/login', login);
 usersRouter.post('/update', authenticate, update);
 usersRouter.get('/me', authenticate, auth);
+usersRouter.get('/user', getById);
