@@ -9,6 +9,7 @@ import { useUserStore } from '@/hooks/userStore';
 import { getMe } from '@/api/auth';
 import { CommentSection } from '@/components/SingleRecipePage/components/CommentSection/CommentSection';
 
+const isMobile = () => window.innerWidth <= 940;
 const formatDate = date => {
   return new Intl.DateTimeFormat('en-GB', {
     day: 'numeric',
@@ -47,10 +48,6 @@ const SingleRecipePage = ({ data }) => {
   ];
   const nutritionInfo = Boolean(nutritionValues.some(d => d));
 
-  if (!user) {
-    return <p>Завантаження...</p>;
-  }
-
   const handleSave = () => {
     saveRecipe(data.id);
     setIsSaved(!isSaved);
@@ -81,61 +78,107 @@ const SingleRecipePage = ({ data }) => {
                 <span className="date">{formatDate(new Date(data.date))}</span>
               </div>
             </div>
-            <div className="headerInfo">
-              <img src={'images/icons/category.svg'} alt="" />
-              {data.categories
-                .map(
-                  c =>
-                    Object.values(RECIPE_CATEGORIES).find(r => r.id === c).name,
-                )
-                .join(', ')}
-            </div>
-            {data.calories && (
+            <div className="caloriesCategories">
               <div className="headerInfo">
-                <img src={'images/icons/calories.svg'} alt="" />
-                {data.calories}kcal
+                {data.categories.length > 0 && (
+                  <>
+                    <img src={'/images/icons/category.svg'} alt="" />
+                    {data.categories
+                      .map(
+                        c =>
+                          Object.values(RECIPE_CATEGORIES).find(r => r.id === c)
+                            .name,
+                      )
+                      .join(', ')}
+                  </>
+                )}
               </div>
-            )}
+              {data.calories && (
+                <div className="headerInfo">
+                  <img src={'/images/icons/calories.svg'} alt="" />
+                  {data.calories}kcal
+                </div>
+              )}
+            </div>
           </div>
         </div>
-        <div className="buttonRow">
-          <ActionButton
-            icon="images/icons/save.svg"
-            text="Save"
-            size={48}
-            onClick={handleSave}
-            iconStyle={{
-              filter: isSaved
-                ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
-                : '',
-            }}
-          />
-          <ActionButton
-            icon="images/icons/thumbs-up.svg"
-            text="Like"
-            size={48}
-            onClick={handleLike}
-            iconStyle={{
-              filter: isLiked
-                ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
-                : '',
-            }}
-          />
-          <ActionButton
-            icon="images/icons/thumbs-down.svg"
-            text="Dislike"
-            size={48}
-            onClick={handleDislike}
-            iconStyle={{
-              filter: isDisliked
-                ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
-                : '',
-            }}
-          />
-        </div>
+        {user && !isMobile() && (
+          <div className="buttonRow">
+            <ActionButton
+              icon="/images/icons/save.svg"
+              text="Save"
+              size={48}
+              onClick={handleSave}
+              iconStyle={{
+                filter: isSaved
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+            <ActionButton
+              icon="/images/icons/thumbs-up.svg"
+              text="Like"
+              size={48}
+              onClick={handleLike}
+              iconStyle={{
+                filter: isLiked
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+            <ActionButton
+              icon="/images/icons/thumbs-down.svg"
+              text="Dislike"
+              size={48}
+              onClick={handleDislike}
+              iconStyle={{
+                filter: isDisliked
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+          </div>
+        )}
       </div>
       <div className="mainBlock">
-        <img src={data.imageUrl} alt={data.name} />
+        <img src={data.imageUrl} alt={data.name} className="image" />
+        {isMobile() && user && (
+          <div className="buttonRow">
+            <ActionButton
+              icon="/images/icons/save.svg"
+              text="Save"
+              size={40}
+              onClick={handleSave}
+              iconStyle={{
+                filter: isSaved
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+            <ActionButton
+              icon="/images/icons/thumbs-up.svg"
+              text="Like"
+              size={40}
+              onClick={handleLike}
+              iconStyle={{
+                filter: isLiked
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+            <ActionButton
+              icon="/images/icons/thumbs-down.svg"
+              text="Dislike"
+              size={40}
+              onClick={handleDislike}
+              iconStyle={{
+                filter: isDisliked
+                  ? 'invert(60%) sepia(100%) hue-rotate(20deg) saturate(400%)'
+                  : '',
+              }}
+            />
+          </div>
+        )}
         {nutritionInfo && <NutritionList data={data} />}
       </div>
       {data.description && (
@@ -166,7 +209,9 @@ const SingleRecipePage = ({ data }) => {
         </div>
       )}
       <div>
-        <h3 className="headerText">Comments</h3>
+        {(user || data.comments.length > 0) && (
+          <h3 className="headerText">Comments</h3>
+        )}
         <CommentSection
           user={user}
           comments={data.comments}

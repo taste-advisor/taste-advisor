@@ -6,7 +6,6 @@ import { createComment } from '@/api/comments';
 export const CommentSection = ({ comments, user, recipeId }) => {
   const [text, setText] = useState('');
 
-  console.log(comments);
   const handleSubmit = e => {
     e.preventDefault();
     if (text.trim()) {
@@ -18,21 +17,23 @@ export const CommentSection = ({ comments, user, recipeId }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="commentSection">
-        <textarea
-          value={text}
-          onChange={e => setText(e.target.value)}
-          placeholder="Write your comment here..."
-          required
-        />
-        {user ? (
-          <button type="submit">Submit Comment</button>
-        ) : (
-          <Link href="/login">
-            <button>Sign in</button>
-          </Link>
-        )}
-      </form>
+      {user && (
+        <form onSubmit={handleSubmit} className="commentSection">
+          <textarea
+            value={text}
+            onChange={e => setText(e.target.value)}
+            placeholder="Write your comment here..."
+            required
+          />
+          {user ? (
+            <button type="submit">Submit Comment</button>
+          ) : (
+            <Link href="/login">
+              <button>Sign in</button>
+            </Link>
+          )}
+        </form>
+      )}
       {comments.length !== 0 && (
         <div className="commentList">
           {comments.map(comment => (
