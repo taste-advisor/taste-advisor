@@ -1,22 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { RecipeCard } from '@/components/HomePage/recipe-card/recipe-card.jsx';
+import { RecipeCard } from '@/components/RecipeCard/recipe-card.jsx';
 import { getAllRecipes } from '@/api/recipe';
 import { useEffect, useState } from 'react';
-import { RECIPE_CATEGORIES } from '@/constants';
 import './recipes-list.scss';
-
-const getCategoryNamesByIds = categoryIds => {
-  return categoryIds
-    .map(id => {
-      const category = Object.values(RECIPE_CATEGORIES).find(
-        cat => cat.id === id,
-      );
-      return category ? category.name : 'Unknown';
-    })
-    .join(', ');
-};
 
 export const RecipesList = () => {
   const [data, setData] = useState(null);
@@ -46,8 +34,9 @@ export const RecipesList = () => {
                 recipeId={info.id}
                 image={info.imageUrl}
                 title={info.name}
-                category={getCategoryNamesByIds(info.categories)}
+                categories={info.categories}
                 calories={info.calories}
+                data={info}
               />
             ))
         ) : (
