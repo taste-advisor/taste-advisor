@@ -1,0 +1,36 @@
+.modalOverlay {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modalContent {
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 90px 100px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: none;
+  position: relative;
+
+}
+
+.closeButton {
+  position: absolute;
+  top: 20px;
+  right: 120px;
+  background: none;
+  border: 1px solid rgba(220, 220, 228, 1);
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+@media (max-width: 768px) {
+  .closeButton {
+    right: 10px;
+  }
+}

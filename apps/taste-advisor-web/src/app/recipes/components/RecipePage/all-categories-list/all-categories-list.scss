@@ -1,0 +1,55 @@
+.allCategoriesList {
+  padding: 20px;
+
+  h2 {
+    font-size: 25px;
+    margin-left: 120px;
+    margin-bottom: 30px;
+  }
+  @media (max-width: 768px) {
+    .allCategoriesList h2 {
+      left: 20px;
+    }
+  }
+}
+
+.categoriesMenu {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+}
+
+
+
+.categoriesButton {
+  padding: 10px 20px;
+  background-color: #E7FAFE;
+  border: 1px solid #B2F2D7;
+  border-radius: 4px;
+  color: #30B37B;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #ddf1f4;
+  }
+}
+
+.allCategoriesCardsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  margin-left: 120px;
+  @media (max-width: 768px) {
+    margin-left: 0;
+    justify-content: center;
+  }
+}
+
+
