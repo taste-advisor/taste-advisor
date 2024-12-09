@@ -1,0 +1,80 @@
+.accountInfo {
+  display: flex;
+  margin: 25px 20px;
+  gap: 200px;
+
+  .userAvatarCabinet {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  .updateAccountInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    label {
+      width: 400px;
+    }
+
+    .buttonsFields {
+      display: flex;
+      gap: 15px;
+      justify-content: right;
+
+
+      .canselInfoButton {
+        width: fit-content;
+        text-decoration: none;
+        padding: 10px 16px;
+        background-color: white;
+        border: 1px solid #8e8c8c;
+        border-radius: 4px;
+        color: #32324D;
+        text-align: center;
+        font-weight: bold;
+
+        &:hover {
+          border: 1px solid #000000;
+          background-color: #f6f3f3;
+        }
+      }
+
+      .saveInfoButton {
+        width: fit-content;
+        padding: 10px 16px;
+        background-color: #E7FAFE;
+        border: 1px solid #B2F2D7;
+        border-radius: 4px;
+        color: #30B37B;
+        text-align: center;
+        font-weight: bold;
+
+        &:hover {
+          background-color: #ddf1f4;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 940px) {
+  .accountInfo{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    .userAvatarCabinet{
+      width: 150px;
+      height: 150px;
+    }
+
+    .updateAccountInfo{
+      label{
+        width: 300px;
+      }
+    }
+  }
+}
