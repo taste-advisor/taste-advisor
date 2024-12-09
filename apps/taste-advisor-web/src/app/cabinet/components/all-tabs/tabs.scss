@@ -1,0 +1,65 @@
+.allTabs{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .tabs {
+    width: 80%;
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+
+    .tabsButton {
+      border: none;
+      background-color: white;
+      color: #8e8ea9;
+      position: relative;
+      padding: 10px 20px;
+      transition: all 0.2s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: transparent;
+        transition: background-color 0.2s ease;
+      }
+
+      &:hover {
+        color: #30b37b;
+        cursor: pointer;
+
+        &::after {
+          background-color: #30b37b;
+        }
+
+        transform: translateY(-2px);
+        transition: transform 0.2s ease;
+      }
+
+      &.active {
+        color: #30b37b;
+        font-weight: bold;
+
+        &::after {
+          background-color: #30b37b;
+        }
+      }
+    }
+  }
+
+  .content{
+    width: 100%;
+  }
+}
+
+@media (max-width: 940px) {
+  .tabs{
+    justify-content: center;
+  }
+}
+
+

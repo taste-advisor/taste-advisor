@@ -1,0 +1,43 @@
+.tabsRecipesList{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .tabsRecipesCardsList {
+    width: 85%;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 32px;
+  }
+
+  .emptySavedRecipes{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+
+    .emptyPictures{
+      width: 30%;
+    }
+
+    .emptyText{
+      color: #4A4A6A;
+    }
+  }
+}
+
+@media (max-width: 940px) {
+  .tabsRecipesList{
+    .tabsRecipesCardsList{
+      justify-content: center;
+    }
+  }
+}
+
