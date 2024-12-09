@@ -1,0 +1,78 @@
+.searchBar {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  margin-left: 1.5%;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    padding-left: 35px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid rgba(234, 234, 239, 1);
+    color: rgba(142, 142, 169, 1);
+
+    &:focus {
+      outline: none;
+      border-color: #82cded;
+      box-shadow: 0 0 5px rgba(48, 179, 123, 0.5);
+    }
+    &:hover {
+      border-color: #b3dff2;
+    }
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px;
+    height: 10px;
+  }
+  .accordionIcon {
+    margin-left: 10px;
+  }
+
+  /* Styles for suggestion */
+  .suggestionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid rgba(234, 234, 239, 1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    z-index: 1000;
+    list-style-type: none;
+    padding: 0;
+    font-size: 14px;
+  }
+
+  .suggestionItem {
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .searchBar {
+    justify-content: center;
+    margin-left: 0;
+    width: 90%;
+  }
+}
+
