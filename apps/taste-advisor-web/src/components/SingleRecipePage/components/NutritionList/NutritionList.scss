@@ -30,3 +30,9 @@
   line-height: 22px;
   font-weight: 700;
 }
+
+@media screen and (max-width: 940px) {
+  .nutrition {
+    width: auto;
+  }
+}

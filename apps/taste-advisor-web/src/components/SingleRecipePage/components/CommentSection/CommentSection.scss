@@ -41,3 +41,9 @@ button {
   border-radius: 8px;
   padding: 8px;
 }
+
+@media screen and (max-width: 940px) {
+  textarea {
+    width: auto;
+  }
+}

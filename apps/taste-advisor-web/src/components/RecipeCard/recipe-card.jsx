@@ -42,7 +42,7 @@ export const RecipeCard = ({ data }) => {
           alt="Save"
         />
       </div>
-      <Link href={`/${data.id}`} className="recipeCard">
+      <Link href={`/recipes/${data.id}`} className="recipeCard">
         <img
           src={data.imageUrl}
           alt="recipe image"

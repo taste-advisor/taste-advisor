@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.caloriesCategories {
+  display: flex;
+  gap: 16px;
+}
+
 .headerLeft {
   display: flex;
   flex-direction: column;
@@ -78,7 +83,7 @@
   max-height: 600px;
   display: flex;
   gap: 30px;
-  img {
+  .image {
     width: 60%;
     max-height: 600px;
     object-fit: cover;
@@ -124,4 +129,48 @@
   font-size: 18px;
   line-height: 22px;
   font-weight: 700;
+}
+
+@media screen and (max-width: 940px) {
+  .content {
+    gap: 16px;
+  }
+
+  .headerContent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  .pageHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 15px;
+  }
+
+  .buttonRow {
+    align-self: center;
+  }
+
+  .headerText {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .caloriesCategories {
+    display: flex;
+  }
+
+  .mainBlock {
+    max-height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    .image {
+      width: 100%;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+  }
 }
