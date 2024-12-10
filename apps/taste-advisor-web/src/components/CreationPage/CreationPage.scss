@@ -1,0 +1,74 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  textarea {
+    width: 400px;
+    padding: 10px 12px 10px 16px;
+    border-radius: 4px;
+    border: 1px solid #DCDCE4;
+  }
+
+  label {
+    font-weight: 600;
+    color: #32324D;
+  }
+}
+
+.title {
+  font-size: 32px;
+  line-height: 40px;
+}
+
+.mainGroup {
+  display: flex;
+  gap: 40px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h3 {
+    border-bottom: 1px solid #B2F2D7;
+    padding-bottom: 6px;
+    line-height: 22px
+  }
+}
+
+.namedField {
+  display: flex;
+  gap: 10px;
+  align-items: end;
+}
+
+button {
+  padding: 8px 16px;
+  width: max-content;
+  background-color: #30B37B;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 940px) {
+  .field textarea {
+    width: auto;
+  }
+
+  .mainGroup {
+    gap: 20px;
+    flex-direction: column;
+  }
+}

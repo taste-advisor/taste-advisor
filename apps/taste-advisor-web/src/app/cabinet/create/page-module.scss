@@ -1,0 +1,10 @@
+.createPage {
+  padding: 0 80px;
+  color: #4A4A6A;
+}
+
+@media screen and (max-width: 940px) {
+  .createPage {
+    padding: 0 10px;
+  }
+}
