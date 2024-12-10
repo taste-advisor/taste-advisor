@@ -3,7 +3,7 @@ import './about-us-cover.scss';
 
 export const AboutUsCover = () => {
   return (
-    <div className="aboutUsCover">
+    <div className="aboutUsCover" id="about_us">
       <div className="aboutUsInfo">
         <h1>About Us</h1>
         <p className="aboutUsText">

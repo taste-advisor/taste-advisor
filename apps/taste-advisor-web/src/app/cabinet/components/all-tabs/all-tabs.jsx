@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import './tabs.scss';
+import './all-tabs.scss';
 import { SavedRecipes } from '@/app/cabinet/components/all-tabs/tabs/saved-tab';
 import { LikedRecipes } from '@/app/cabinet/components/all-tabs/tabs/liked-tab';
 import { MyMealsRecipes } from '@/app/cabinet/components/all-tabs/tabs/my-meals-tab';
 
-export const Tabs = () => {
+export const AllTabs = () => {
   const [activeTab, setActiveTab] = useState('saved');
 
   const handleTabChange = tab => {

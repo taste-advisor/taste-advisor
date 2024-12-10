@@ -11,7 +11,7 @@ export const MainCover = () => {
           and inspiration to bring out the chef in you. Let's make cooking
           exciting!
         </p>
-        <Link href="/recipe" className="recipesLink">
+        <Link href="/recipes" className="recipesLink">
           <p className="recipesLinkText">Explore Recipes</p>
         </Link>
       </div>

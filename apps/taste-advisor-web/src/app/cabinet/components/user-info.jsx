@@ -1,7 +1,7 @@
 'use client';
 
 import { AccountInfo } from '@/app/cabinet/components/account-info/account-info';
-import { Tabs } from '@/app/cabinet/components/all-tabs/tabs';
+import { AllTabs } from '@/app/cabinet/components/all-tabs/all-tabs';
 import { useUserStore } from '@/hooks/userStore';
 import { useEffect } from 'react';
 import { getMe } from '@/api/auth';
@@ -20,7 +20,7 @@ export const UserInfo = () => {
     <>
       <h1 className="cabinetText">My account</h1>
       <AccountInfo user={user} />
-      <Tabs />
+      <AllTabs />
     </>
   );
 };

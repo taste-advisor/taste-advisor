@@ -14,3 +14,14 @@
     padding: 18px 40px;
   }
 }
+
+@media (max-width: 940px) {
+  .header{
+    justify-content: space-around;
+
+    .logo{
+      width: 100px;
+      height: 24px;
+    }
+  }
+}

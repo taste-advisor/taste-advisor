@@ -45,3 +45,23 @@
     background: linear-gradient(to top, #daf5fa 10%, #daf5fa 0%, transparent 80%);
   }
 }
+
+@media (max-width: 920px) {
+  .aboutProjectCover{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .aboutProjectInfo{
+      width: 100%;
+    }
+
+    .aboutProjectImage{
+      width: 100%;
+
+      .aboutProjectImageSrc{
+        width: 80%;
+      }
+    }
+  }
+}

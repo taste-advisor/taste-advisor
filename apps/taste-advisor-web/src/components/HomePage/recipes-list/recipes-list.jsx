@@ -8,6 +8,24 @@ import './recipes-list.scss';
 
 export const RecipesList = () => {
   const [data, setData] = useState(null);
+  const [recipesToShow, setRecipesToShow] = useState(9);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 920) {
+        setRecipesToShow(3);
+      } else {
+        setRecipesToShow(9);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     getAllRecipes().then(res => {
       setData(res);
@@ -27,7 +45,7 @@ export const RecipesList = () => {
       <div className="recipesCardsList">
         {data ? (
           data
-            .slice(0, 9)
+            .slice(0, recipesToShow)
             .map(info => (
               <RecipeCard
                 key={info.id}

@@ -32,11 +32,29 @@
 
       &:hover {
         border: 1px solid #000000;
+        background-color: #f6f3f3;
       }
 
       .recipesLinkText{
         font-size: 13px;
       }
+    }
+  }
+}
+
+@media (max-width: 920px) {
+  .aboutUsCover{
+    background: linear-gradient(to bottom, #e7fafe 35%, transparent 80%),
+    url("/images/aboutUsImage.png");
+    background-position: top center;
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .aboutUsInfo{
+      width: 80%;
+      margin: 20px 0 80px 0;
     }
   }
 }
