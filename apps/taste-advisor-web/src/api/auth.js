@@ -40,7 +40,6 @@ export const updateUser = async body => {
     getAuthorizationHeader(),
   );
   if (data.status === 'success') {
-    setToken(data.data);
     await getMe();
     return;
   }

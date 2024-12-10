@@ -14,7 +14,7 @@ export const Navigation = () => {
           <p>RECIPES</p>
         </div>
       </Link>
-      <Link href="/about_us" className="navigationLink">
+      <Link href="/#about_us" className="navigationLink">
         <div>
           <p>ABOUT US</p>
         </div>

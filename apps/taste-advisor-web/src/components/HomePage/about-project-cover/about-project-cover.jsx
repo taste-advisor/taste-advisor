@@ -21,7 +21,7 @@ export const AboutProjectCover = () => {
         </Link>
       </div>
       <div className="aboutProjectImage">
-        <img src="/images/aboutProjectImage.png" alt="About UsCover" />
+        <img src="/images/aboutProjectImage.png" alt="About UsCover" className="aboutProjectImageSrc" />
       </div>
     </div>
   );

@@ -22,13 +22,24 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+
+      .errorMessage{
+        color: red;
+      }
       }
 
     .alreadyRegistered {
       display: flex;
       flex-direction: column;
       align-items: center;
-      }
     }
   }
+}
+
+
+@media (max-width: 920px) {
+  .container{
+    width: 70%;
+  }
+}
 

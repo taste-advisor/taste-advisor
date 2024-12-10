@@ -6,10 +6,20 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #B2F2D7;
+  margin-top: auto;
 
   .logo {
     width: 120px;
     height: 28px;
     padding: 18px 40px;
+  }
+}
+
+@media (max-width: 940px){
+  .footer{
+    .logo{
+      width: 100px;
+      height: 24px;
+    }
   }
 }

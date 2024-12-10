@@ -22,7 +22,7 @@ export const SearchBar = ({
     } else {
       setLocalSuggestions([]);
       setSuggestions([]);
-      setFilteredData(data); // If the input field is empty, we restore all cards
+      setFilteredData(data);
     }
   };
 
@@ -34,7 +34,6 @@ export const SearchBar = ({
     setCurrentItems([suggestion]);
   };
 
-  //filter the cards by pressing Enter
   const handleSearchEnter = () => {
     if (searchQuery) {
       const filteredResults = data.filter(recipe =>
@@ -47,7 +46,6 @@ export const SearchBar = ({
     }
   };
 
-  //filter cards by clicking the search icon
   const handleSearchClick = () => {
     if (searchQuery) {
       const filteredResults = data.filter(recipe =>
@@ -62,7 +60,7 @@ export const SearchBar = ({
 
   const handleKeyDown = event => {
     if (event.key === 'Enter') {
-      handleSearchEnter(); // call the function to process the search when Enter is pressed
+      handleSearchEnter();
     }
   };
 
@@ -80,11 +78,6 @@ export const SearchBar = ({
         alt="Search Icon"
         className="searchIcon"
         onClick={handleSearchClick}
-      />
-      <img
-        src="/images/icons/accordion-icon.svg"
-        alt="Accordion Icon"
-        className="accordionIcon"
       />
       {searchQuery && suggestions.length > 0 && (
         <ul className="suggestionsList">

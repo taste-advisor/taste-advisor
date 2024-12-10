@@ -35,3 +35,20 @@
     }
   }
 }
+
+@media (max-width: 920px) {
+  .mainCover{
+    background: linear-gradient(to bottom, #e7fafe 35%, transparent 80%),
+    url("/images/main-cover-background.png");
+    background-position: top center;
+    background-size: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .mainCoverInfo{
+      width: 80%;
+      margin: 20px 0 200px 0;
+    }
+  }
+}

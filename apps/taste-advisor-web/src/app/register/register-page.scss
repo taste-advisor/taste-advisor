@@ -14,7 +14,8 @@ body {
   background: linear-gradient(to right, #e7fafe 25%, transparent 80%),
   url("/images/login-background-image.png");
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center center;
+  background-size: cover
 }
 
 .registerPage {
@@ -22,4 +23,28 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+@media (max-width: 920px) {
+  .registerBackground{
+    background: linear-gradient(to bottom, #e7fafe 25%, transparent 80%),
+    url("/images/login-background-image.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+
+    .registerPage {
+      flex-direction: column;
+      padding: 20px;
+      justify-content: center;
+
+      .logoLink{
+        width: 70%;
+
+        .logo{
+          width: 100%;
+        }
+      }
+    }
+  }
 }

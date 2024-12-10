@@ -46,7 +46,7 @@ export const RECIPE_CATEGORIES = Object.freeze({
   },
   SEA_FOOD: {
     id: 10,
-    img: '/images/icons/rice-ball.svg',
+    img: '/images/icons/shrimp.svg',
     name: 'Sea food',
   },
   BREAD: {
@@ -63,5 +63,10 @@ export const RECIPE_CATEGORIES = Object.freeze({
     id: 13,
     img: '/images/icons/flag-france.svg',
     name: 'French cuisine',
+  },
+  ALL_RECIPES: {
+    id: 14,
+    img: '/images/icons/cross-mark.svg',
+    name: 'All recipes',
   },
 });

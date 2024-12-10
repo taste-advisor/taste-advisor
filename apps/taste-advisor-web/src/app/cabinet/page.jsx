@@ -6,7 +6,7 @@ import React from 'react';
 export default function CabinetPage() {
   const breadcrumbsOptions = [
     { label: 'TasteAdvisor', href: '/' },
-    { label: 'cabinet', href: '/cabinet' },
+    { label: 'Cabinet', href: '/cabinet' },
   ];
   return (
     <div className="cabinetPage">
