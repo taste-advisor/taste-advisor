@@ -17,7 +17,7 @@ export const AllRecipeList = () => {
   useEffect(() => {
     getAllRecipes().then(res => {
       setData(res);
-      setFilteredData(res); // show all recipes
+      setFilteredData(res);
     });
   }, []);
 
@@ -27,8 +27,8 @@ export const AllRecipeList = () => {
       const category = urlParams.get('category');
 
       if (category) {
-        const filtered = data.filter(
-          recipe => recipe.categories.includes(parseInt(category)),
+        const filtered = data.filter(recipe =>
+          recipe.categories.includes(parseInt(category)),
         );
         setFilteredData(filtered);
         setCurrentItems(filtered.slice(0, itemsPerPage));
