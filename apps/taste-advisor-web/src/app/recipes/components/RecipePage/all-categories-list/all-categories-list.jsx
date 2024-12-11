@@ -5,14 +5,17 @@ import { Modal } from '@/app/recipes/components/RecipePage/modal/modal.jsx';
 import './all-categories-list.scss';
 import { AllCategoriesCard } from '@/app/recipes/components/RecipePage/all-categories-card/all-categories-card';
 
-export const AllCategoriesList = ({ recipes, limit = 13 }) => {
+export const AllCategoriesList = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
 
   const handleCategoryClick = id => {
-    window.location.href = `/recipes?category=${id}`; // це змінює URL
+    const isAllRecipes = id === RECIPE_CATEGORIES.ALL_RECIPES.id;
+    window.location.href = isAllRecipes
+      ? '/recipes'
+      : `/recipes?category=${id}`;
   };
 
   return (

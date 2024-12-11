@@ -1,10 +1,8 @@
 .recipesList {
-  margin-top:20px;
   width: 85%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
 
 .menuContainer{
   display: flex;
@@ -16,6 +14,7 @@
 
 }
   .recipesCardsList {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,14 +35,6 @@
     &:hover {
       background-color: #23a36d;
     }
-
   }
 }
 
-@media (max-width: 768px) {
-  .menuContainer {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
- }
-}

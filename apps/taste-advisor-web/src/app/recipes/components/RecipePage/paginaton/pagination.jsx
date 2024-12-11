@@ -4,7 +4,6 @@ import './pagination.scss';
 export const Pagination = ({ data, itemsPerPage = 9, onPageItemsChange }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Обчислюємо кількість сторінок
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   useEffect(() => {

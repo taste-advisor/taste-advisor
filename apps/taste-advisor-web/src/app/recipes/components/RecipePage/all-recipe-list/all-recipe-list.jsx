@@ -8,11 +8,11 @@ import { AllCategoriesList } from '@/app/recipes/components/RecipePage/all-categ
 import './all-recipe-list.scss';
 
 export const AllRecipeList = () => {
-  const [data, setData] = useState(null); // all recipes
-  const [filteredData, setFilteredData] = useState(null); // filtered recipes
+  const [data, setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
-  const itemsPerPage = 9; // number of elements per page
+  const itemsPerPage = 9;
 
   useEffect(() => {
     getAllRecipes().then(res => {
@@ -21,21 +21,19 @@ export const AllRecipeList = () => {
     });
   }, []);
 
-  //filtering recipe
   useEffect(() => {
     if (data) {
       const urlParams = new URLSearchParams(window.location.search);
-      const category = urlParams.get('category'); // get category from URL
+      const category = urlParams.get('category');
 
       if (category) {
-        // If there is a category in the URL, we filter the recipes
         const filtered = data.filter(
-          recipe => recipe.categories.includes(parseInt(category)), //  filter recipes by category
+          recipe => recipe.categories.includes(parseInt(category)),
         );
         setFilteredData(filtered);
         setCurrentItems(filtered.slice(0, itemsPerPage));
       } else {
-        setFilteredData(data); // If the category is not specified, show all recipes
+        setFilteredData(data);
         setCurrentItems(data.slice(0, itemsPerPage));
       }
     }

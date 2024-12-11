@@ -7,7 +7,7 @@
     justify-content: space-between;
     margin-bottom: 20px;
 
-    .categoriesLink{
+    .categoriesButton{
       text-decoration: none;
       width: fit-content;
       padding: 10px 16px;
@@ -19,6 +19,7 @@
       font-weight: bold;
 
       &:hover {
+        cursor: pointer;
         background-color: #ddf1f4;
       }
 
@@ -31,6 +32,16 @@
   .categoriesCardsList{
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 920px) {
+    .categoriesCardsList {
+      overflow-x: auto; /* Додаємо горизонтальний скрол */
+      -webkit-overflow-scrolling: touch; /* Для плавного скролу на мобільних пристроях */
+      padding-bottom: 10px; /* Для коректного відображення на деяких пристроях */
+      flex-wrap: nowrap; /* Забороняє розрив рядків, змушує елементи бути в одному рядку */
+    }
   }
 }

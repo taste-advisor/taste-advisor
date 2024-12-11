@@ -11,7 +11,7 @@ export default function FullRecipePage() {
   ];
 
   return (
-    <div>
+    <div className="allRecipesPage">
       <Breadcrumbs items={breadcrumbsOptions} />
       <div className="recipePage">
         <AllRecipeList />
