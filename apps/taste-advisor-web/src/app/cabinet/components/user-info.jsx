@@ -14,7 +14,7 @@ export const UserInfo = () => {
   }, []);
 
   if (!user) {
-    return <p>Завантаження...</p>;
+    return null;
   }
   return (
     <>

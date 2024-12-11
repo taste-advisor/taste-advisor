@@ -14,7 +14,7 @@ export const AuthorizedMenu = () => {
   }, [user]);
 
   if (!user) {
-    return <p>Завантаження...</p>;
+    return <p>Loading...</p>;
   }
 
   return (

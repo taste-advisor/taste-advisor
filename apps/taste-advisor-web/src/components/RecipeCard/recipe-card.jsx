@@ -26,7 +26,6 @@ export const RecipeCard = ({ data }) => {
 
   const handleSave = () => {
     if (!data?.id) {
-      console.error('Recipe data or ID is missing');
       return;
     }
     saveRecipe(data.id);
@@ -35,13 +34,15 @@ export const RecipeCard = ({ data }) => {
 
   return (
     <div className="recipeCardBody">
-      <div className="saveButton" onClick={handleSave}>
-        <img
-          src="/images/icons/save.svg"
-          className={`saveButtonIcon ${isSaved ? 'saved' : ''}`}
-          alt="Save"
-        />
-      </div>
+      {user && (
+        <div className="saveButton" onClick={handleSave}>
+          <img
+            src="/images/icons/save.svg"
+            className={`saveButtonIcon ${isSaved ? 'saved' : ''}`}
+            alt="Save"
+          />
+        </div>
+      )}
       <Link href={`/recipes/${data.id}`} className="recipeCard">
         <img
           src={data.imageUrl}

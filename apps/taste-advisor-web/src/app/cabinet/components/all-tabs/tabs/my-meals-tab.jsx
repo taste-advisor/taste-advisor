@@ -23,7 +23,7 @@ export const MyMealsRecipes = () => {
   }, [user]);
 
   if (!myMealsRecipes) {
-    return <p>Завантаження...</p>;
+    return <p>Loading...</p>;
   }
 
   return (

@@ -23,14 +23,16 @@ export const login = async body => {
 };
 
 export const getMe = async () => {
-  const { data } = await client.get('/users/me', getAuthorizationHeader());
-  if (data.status === 'success') {
-    if (!useUserStore.getState().use) {
-      await useUserStore.getState().setUser(data.data);
+  try {
+    const { data } = await client.get('/users/me', getAuthorizationHeader());
+    if (data.status === 'success') {
+      if (!useUserStore.getState().use) {
+        await useUserStore.getState().setUser(data.data);
+      }
+    } else {
+      await useUserStore.getState().setUser(null);
     }
-  } else {
-    await useUserStore.getState().setUser(null);
-  }
+  } catch (error) {}
 };
 
 export const updateUser = async body => {

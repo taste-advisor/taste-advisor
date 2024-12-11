@@ -23,7 +23,7 @@ export const LikedRecipes = () => {
   }, [user]);
 
   if (!likedRecipes) {
-    return <p>Завантаження...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
